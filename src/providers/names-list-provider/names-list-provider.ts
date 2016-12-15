@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 export class NamesListProvider {
 
   dbUserTempKey: string;
-  sureNameEntered: string = 'Chour';
+  sureNameEntered: string;
+  selectedSex: string;
 
   public constructor() {}
 
