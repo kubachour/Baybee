@@ -13,6 +13,6 @@ export class Login {
   }
 
   login(){
-    this.navCtrl.push(Settings);
+    this.navCtrl.setRoot(Settings);
   }
 }
