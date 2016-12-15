@@ -15,10 +15,10 @@ import { NamesListProvider } from '../providers/names-list-provider/names-list-p
 import { AngularFireModule } from 'angularfire2';
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyAKuiX2hGGLm1UUfAqNcgd85UgxnFRAwas',
-  authDomain: 'baybee-e9869.firebaseapp.com',
-  databaseURL: 'https://baybee-e9869.firebaseio.com/',
-  storageBucket: 'baybee-e9869.appspot.com'
+  apiKey: 'AIzaSyB7JsQBCqVbXe_z78wazCt1G8yw93hQsBU',
+  authDomain: 'todotest-8a93b.firebaseapp.com',
+  databaseURL: 'https://todotest-8a93b.firebaseio.com/',
+  storageBucket: 'todotest-8a93b.appspot.com'
 };
 
 @NgModule({
