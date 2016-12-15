@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Jaká jména byste chtěli?</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+  <ion-content padding>
+    <ion-list inset>
+      <ion-item *ngFor="let list of listOfLists; let i=index" (change)="itemSelected(list)">
+        <ion-label>{{list.listName}}</ion-label>
+          <ion-checkbox [ngStyle]="{'div .checkbox-checked background-color': '#EA65A2'}" checked="false"></ion-checkbox>
+          <!--<ion-checkbox girl checked="false"></ion-checkbox>-->
+      </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer no-shadow padding>
+  <ion-toolbar>
+    <button color="primary" block ion-button icon-left (click)="continue()">
+    <!--<button primary block (click)="continue()">-->
+      <ion-icon name="ion-android-bulb"></ion-icon>
+        Pokračovat
+    </button>
+  </ion-toolbar>
+</ion-footer>

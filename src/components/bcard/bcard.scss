@@ -1,0 +1,35 @@
+.bcard {
+    width: 90%;
+    overflow:auto;
+    border: 1px solid lightgrey;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 80%;
+    -webkit-box-shadow: 11px 11px 5px -9px rgba(0,0,0,0.21);
+    -moz-box-shadow: 11px 11px 5px -9px rgba(0,0,0,0.21);
+    box-shadow: 11px 11px 5px -9px rgba(0,0,0,0.21);
+}
+
+.card-divider {
+    display: block;
+    float: left;
+    width: 48%;
+
+}
+
+.card-logo{
+    padding-top: 20%;
+    padding-left: 15px;
+}
+
+.card-text{
+    margin-left: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 10px;
+}
+
+.card-name {
+    font-weight: bold;
+}

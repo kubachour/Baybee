@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-searchbar [(ngModel)]="searchQuery" placeholder='Vyhledat jméno'></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of namesDB | async | searchFilter:searchQuery" (click)="continue()" (ionDrag)="ondrag($event)" (swipe)='onSwipe(item)'>
+            
+        <ion-item>
+            <h1>{{item.name}} {{sureNameEntered}}</h1> 
+            <ion-badge *ngFor="let label of item.labels; let x=index" [ngClass]=[label.class]>{{label.name}}</ion-badge>  
+        </ion-item>-->
+    
+    <ion-item-options side="left">
+      <!--<button (click)="favorite(item)">Favorite</button>
+      <button danger (click)="share(item)">Share</button>-->
+    </ion-item-options>
+    <ion-item-options side="right">
+      <!--<button (click)="favorite(item)">Favorite</button>
+      <button danger (click)="share(item)">Share</button>-->
+    </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
+
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nastavení</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="page1">
+<div text-center class="heading">Co to bude?</div>
+<div text-center class="explanationText">Ukážeme vám jen jména zvoleného pohlaví</div>
+<ion-grid>
+    <ion-row center>
+      <ion-col width-33 (click)="sexClick('girl')">
+       <img [attr.src]="girlActive === true ? 'assets/img/girl.png' : 'assets/img/girl-gray.png'">  
+      </ion-col>
+      <ion-col width-33 (click)="sexClick('unknown')">
+        <img [attr.src]="unknownSexActive === true ? 'assets/img/question-mark.png' : 'assets/img/question-mark-grey.png'">  
+      </ion-col>
+      <ion-col width-33 (click)="sexClick('boy')">
+        <img [attr.src]="boyActive === true ? 'assets/img/boy.png' : 'assets/img/boy-grey.png'">
+      </ion-col>
+    </ion-row>
+    <ion-row center>
+      <ion-col width-33>
+        <!--possible change button colors to [color]="barColor" - https://github.com/driftyco/ionic/blob/master/CHANGELOG.md#component-colors -->
+        <button ion-button small block [class.button-girl]="girlActive" [class.button-light]="!girlActive" (click)="sexClick('girl')">Máme holku</button>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button small block [class.button-primary]="unknownSexActive" [class.button-light]="!unknownSexActive" (click)="sexClick('unknown')">Nevíme</button>  
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button small block [class.button-boy]="boyActive" [class.button-light]="!boyActive" (click)="sexClick('boy')">Máme kluka</button>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div text-center class="heading">Jaké bude mít příjmení?</div>
+  <div text-center class="explanationText">Abyste viděli celé jméno</div>
+ 
+  <ion-item>
+    <ion-input type="text" placeholder="Novák"></ion-input>
+    <div text-center>Abyste viděli jak bude vypadat celé jméno</div>
+  </ion-item>
+
+  <div padding>
+    <button ion-button large block (click)="continue()">Pokračovat</button>  
+  </div>  
+
+</ion-content>
