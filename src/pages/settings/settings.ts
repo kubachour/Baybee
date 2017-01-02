@@ -44,7 +44,6 @@ export class Settings {
 
 continue(){
     this.NamesListProvider.sureNameEntered = this.inputSureName;
-    console.log(this.NamesListProvider.selectedSex + " " + this.NamesListProvider.sureNameEntered + " " + this.inputSureName);
     this.nav.setRoot(ListOfLists,{
       message: 'ahoj'
     });

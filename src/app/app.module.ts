@@ -13,6 +13,9 @@ import { SearchFilter } from '../pipes/search-filter/search-filter';
 import { ToastProvider } from '../providers/toast-provider/toast-provider';
 import { NamesListProvider } from '../providers/names-list-provider/names-list-provider';
 import { AngularFireModule } from 'angularfire2';
+import { NameDataModel } from '../models/name';
+import { NameList } from '../models/name-list';
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyB7JsQBCqVbXe_z78wazCt1G8yw93hQsBU',
@@ -38,7 +41,11 @@ export const firebaseConfig = {
     FavouritesTab,
 
     // pipes
-    SearchFilter
+    SearchFilter,
+
+    //data model
+    NameDataModel,
+    NameList
 
   ],
   imports: [
@@ -54,7 +61,9 @@ export const firebaseConfig = {
     Login,
     ListOfNames,
     ListOfLists,
-    FavouritesTab
+    FavouritesTab,
+    NameDataModel,
+    NameList
   ],
   providers: [
     ToastProvider,
