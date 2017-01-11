@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFire } from 'angularfire2';
+
 
 @Injectable()
 export class NamesListProvider {
 
-  dbUserTempKey: string;
-  sureNameEntered: string;
-  selectedSex: string;
+  public dbUserTempKey: string;
+  public sureNameEntered: string;
+  public selectedSex: string;
+  // private af: any;
 
-  public constructor() {}
+  public constructor(private af: AngularFire) {}
 
+findAllNames(): Observable<any[]>{
+  return this.af.database.list('/UserListOfNames/-JZl_BbXymAnOCPppMzP/');
+}
 
 }
 

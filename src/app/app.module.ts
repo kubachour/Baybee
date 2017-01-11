@@ -13,8 +13,12 @@ import { SearchFilter } from '../pipes/search-filter/search-filter';
 import { ToastProvider } from '../providers/toast-provider/toast-provider';
 import { NamesListProvider } from '../providers/names-list-provider/names-list-provider';
 import { AngularFireModule } from 'angularfire2';
-import { NameDataModel } from '../models/name';
-import { NameList } from '../models/name-list';
+
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+
+// this throws err: Error: unexpected value 'XZ' declared by the module 'AppModule'
+// import { NameList } from '../models/name-list';
 
 
 export const firebaseConfig = {
@@ -43,14 +47,14 @@ export const firebaseConfig = {
     // pipes
     SearchFilter,
 
-    //data model
-    NameDataModel,
-    NameList
+   ],
 
-  ],
   imports: [
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    
+    //data model
+    //NameList
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,8 +66,6 @@ export const firebaseConfig = {
     ListOfNames,
     ListOfLists,
     FavouritesTab,
-    NameDataModel,
-    NameList
   ],
   providers: [
     ToastProvider,

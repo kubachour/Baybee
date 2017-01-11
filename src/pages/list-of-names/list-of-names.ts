@@ -4,7 +4,6 @@ import { NameView } from '../name-view/name-view';
 import { ListOfLists } from '../list-of-lists/list-of-lists';
 import { ToastProvider } from '../../providers/toast-provider/toast-provider';
 import { NamesListProvider } from '../../providers/names-list-provider/names-list-provider';
-import { Observable } from 'rxjs/Observable';
 import { SearchFilter } from '../../pipes/search-filter/search-filter';
 import 'rxjs/add/operator/map';
 
@@ -18,18 +17,26 @@ export class ListOfNames {
     public pageTitle: string;
     private swipingSide: string;
     private actualList: string;
-    private af: any;
-    // public namesDB: any;
-    private userDB: any;
+    //private af: any;
+    public namesList: any[];
+    //private userDB: any;
     private searchQuery: string = '';
     private UserDbPath: string = '';
     // public af: any;
     private namesArray: any;
 
 
- ionViewWillLeave() {
+ionViewWillLeave() {
     // this.updateList();
   }    
+
+ionViewWillEnter() {
+  this.namesListProvider.findAllNames()
+    .do(console.log)
+    .subscribe(
+      names => this.namesList = names
+    );
+}
    
 constructor(private nav: NavController, private navParams: NavParams, private toastProvider: ToastProvider, private namesListProvider: NamesListProvider)  {
     this.sureNameEntered = this.namesListProvider.sureNameEntered;
@@ -42,11 +49,7 @@ constructor(private nav: NavController, private navParams: NavParams, private to
  
   }  
 
-  findListofNames():Observable<any> {
-    return this.af.list('/UserListOfNames/-JZl_BbXymAnOCPppMzP/namesContained')
-      .map(Observable)
-      .do(console.log());     
-  }
+ 
   
   continue(){
     this.nav.push(NameView);
