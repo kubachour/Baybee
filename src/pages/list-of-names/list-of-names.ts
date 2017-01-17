@@ -36,6 +36,8 @@ ionViewWillEnter() {
     .subscribe(
       names => this.namesList = names
     );
+    
+  
 }
    
 constructor(private nav: NavController, private navParams: NavParams, private toastProvider: ToastProvider, private namesListProvider: NamesListProvider)  {

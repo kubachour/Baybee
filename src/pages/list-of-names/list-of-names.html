@@ -11,11 +11,11 @@
 <ion-searchbar [(ngModel)]="searchQuery" placeholder='Vyhledat jméno'></ion-searchbar>
   <ion-list>
     <!--<ion-item-sliding *ngFor="let item of namesDB | async | searchFilter:searchQuery" (click)="continue()" (ionDrag)="ondrag($event)" (swipe)='onSwipe(item)'>-->
-    <ion-item-sliding *ngFor="let item of namesDB | async | searchFilter:searchQuery" (click)="continue()" (ionDrag)="ondrag($event)" (swipe)='onSwipe(item)'>
+    <ion-item-sliding *ngFor="let name of namesList | searchFilter:searchQuery" (click)="continue()" (ionDrag)="ondrag($event)" (swipe)='onSwipe(item)'>
             
         <ion-item>
-            <h1>{{item}} {{item.$key}}</h1> 
-            <ion-badge *ngFor="let label of item.labels; let x=index" [ngClass]=[label.class]>{{label.name}}</ion-badge>  
+            <h1>{{name.name}} {{sureNameEntered}}</h1> 
+            <!--<ion-badge *ngFor="let label of item.labels; let x=index" [ngClass]=[label.class]>{{label.name}}</ion-badge>  -->
         </ion-item>-->
     
     <ion-item-options side="left">
