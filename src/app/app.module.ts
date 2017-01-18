@@ -10,6 +10,7 @@ import { ListOfLists } from '../pages/list-of-lists/list-of-lists';
 import { Bcard } from '../components/bcard/bcard';
 import { FavouritesTab } from '../components/favourites-tab/favourites-tab';
 import { SearchFilter } from '../pipes/search-filter/search-filter';
+import { AuthProvider } from '../providers/auth-provider/auth';
 import { ToastProvider } from '../providers/toast-provider/toast-provider';
 import { NamesListProvider } from '../providers/names-list-provider/names-list-provider';
 import { AngularFireModule } from 'angularfire2';
@@ -69,7 +70,8 @@ export const firebaseConfig = {
   ],
   providers: [
     ToastProvider,
-    NamesListProvider
+    NamesListProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { NameView } from '../name-view/name-view';
 import { ListOfLists } from '../list-of-lists/list-of-lists';
 import { ToastProvider } from '../../providers/toast-provider/toast-provider';
+import { AuthProvider } from '../../providers/auth-provider/auth';
 import { NamesListProvider } from '../../providers/names-list-provider/names-list-provider';
 import { SearchFilter } from '../../pipes/search-filter/search-filter';
 import 'rxjs/add/operator/map';
@@ -42,7 +43,7 @@ ionViewWillEnter() {
    
 constructor(private nav: NavController, private navParams: NavParams, private toastProvider: ToastProvider, private namesListProvider: NamesListProvider)  {
     this.sureNameEntered = this.namesListProvider.sureNameEntered;
-    // this.af = af;
+    
     this.toastProvider = toastProvider;
     this.actualList = this.navParams.get('listToShow') || 'unsorted';
     this.pageTitle = this.navParams.get('pageTitle') || 'Seznam jmen';
