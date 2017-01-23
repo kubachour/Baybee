@@ -34,7 +34,7 @@ export class FavouritesTab {
       pageTitle: 'Jména, která se mi nelíbí'
     };
     this.myFavouritesPageParams = {
-      listToShow: 'favourite',
+      listToShow: 'liked',
       pageTitle: 'Můj výběr'
     }
     

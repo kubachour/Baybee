@@ -17,22 +17,14 @@ export class ListOfNames {
     public sureNameEntered: string;
     public pageTitle: string;
     private swipingSide: string;
-    private actualList: string;
-    //private af: any;
+    private actualPage: string;
     public namesList: any[];
-    //private userDB: any;
     private searchQuery: string = '';
     private UserDbPath: string = '';
-    // public af: any;
     private namesArray: any;
 
-
-ionViewWillLeave() {
-    // this.updateList();
-  }    
-
 ionViewWillEnter() {
-  this.namesListProvider.findAllNames()
+  this.namesListProvider.findAllNames(this.actualPage)
     .do(console.log)
     .subscribe(
       names => this.namesList = names
@@ -45,11 +37,10 @@ constructor(private nav: NavController, private navParams: NavParams, private to
     this.sureNameEntered = this.namesListProvider.sureNameEntered;
     
     this.toastProvider = toastProvider;
-    this.actualList = this.navParams.get('listToShow') || 'unsorted';
+    this.actualPage = this.navParams.get('listToShow') || 'unsorted';
     this.pageTitle = this.navParams.get('pageTitle') || 'Seznam jmen';
 
-    // this.namesDB = af.database.list('/UserListOfNames/-JZl_BbXymAnOCPppMzP/namesContained');
- 
+
   }  
 
  
