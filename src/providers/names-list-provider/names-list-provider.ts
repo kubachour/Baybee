@@ -47,10 +47,18 @@ findAllNames(pageName: string): Observable<any[]>{
   const NamesByPushKeys = NamesByUserList
     .map(list => list.map(name => this.af.database.object('Names/' + name.$key)))
     .flatMap(listOfObservables => Observable.combineLatest(listOfObservables))
-    
-    
-
+  
   return NamesByPushKeys;
+}
+
+pushList(listName: string, nameKeysAsObject){
+
+  //aktualizovat Pushkeys
+  //Smazat puvodni
+  const saveList = this.af.database.list('UserListOfNames/' + listName + '/')
+    .push(
+      nameKeysAsObject)
+  saveList.remove()    
 }
   
 }

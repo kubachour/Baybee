@@ -29,7 +29,18 @@ ionViewWillEnter() {
     .subscribe(
       names => this.namesList = names
     );
-    
+  
+}
+
+ionViewWillLeave() {
+var namesKeysObject = {}
+var namesExtracted = this.namesList.map((a) => a.$key)
+
+namesExtracted.forEach(function(key) {
+  namesKeysObject[key] = 'true'
+})
+
+this.namesListProvider.pushList(this.actualPage, namesKeysObject);
   
 }
    
