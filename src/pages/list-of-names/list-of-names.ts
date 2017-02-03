@@ -60,8 +60,8 @@ constructor(private nav: NavController, private navParams: NavParams, private to
     this.nav.push(NameView);
   }
 
-  ondrag(item) {
-   let percent = item.getSlidingPercent();
+  ondrag(nameOrder) {
+   let percent = nameOrder.getSlidingPercent();
     if (percent > -1){
       this.swipingSide = 'left'; 
       console.info('Swiping ' + this.swipingSide);
@@ -71,9 +71,11 @@ constructor(private nav: NavController, private navParams: NavParams, private to
     } 
   }
 
-  onSwipe(item:any) {
+  onSwipe(nameOrder:number) {
+    
+    
     if (this.swipingSide === 'left') {
-      // this.updateList(item);
+      // this.updateList(nameOrder);
       this.toastProvider.make('Jméno přesunuto do Nelíbí se mi');
       }
     if (this.swipingSide === 'right') {

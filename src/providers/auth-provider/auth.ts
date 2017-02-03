@@ -5,9 +5,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthProvider {
 
-  public userUnsortedListFbPushKey: string = '-KbzSshu6e90SQ4hHiAs'
-  public userLikedListFbPushKey: string = '-KbzT1Wp_8ofTkbLHWxx'
-  public userDislikedListFbPushKey: string = '-KbzTWB9mgzZqIOl2RlX'
+  public userUnsortedListFbPushKey: string = '-KbzTVdWFjS7iFiw69ao'
+  public userLikedListFbPushKey: string = '-Kc2P3Yt16x-uBfCPm6y'
+  public userDislikedListFbPushKey: string = '-Kc2P8AO6YaO38kQX1pc'
 
   constructor(public http: Http) {
   }
