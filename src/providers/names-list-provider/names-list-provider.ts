@@ -15,6 +15,7 @@ export class NamesListProvider {
   private likedPushKey: string;
   private unsortedPushKey: string;
   private actualPage: string;
+  private pushKey: string;
   
   public constructor(private af: AngularFire, private authProvider: AuthProvider) {
     this.unsortedPushKey = this.authProvider.userUnsortedListFbPushKey;
@@ -26,39 +27,55 @@ export class NamesListProvider {
 
 
 findAllNames(pageName: string): Observable<any[]>{
-  let pushKey;
 
   if (pageName === 'unsorted') {
-    pushKey = this.unsortedPushKey
+    this.pushKey = this.unsortedPushKey
   }
   else if (pageName === 'liked') {
-    pushKey = this.likedPushKey
+    this.pushKey = this.likedPushKey
   }
   else if (pageName === 'disliked') {
-    pushKey = this.dislikedPushKey
+    this.pushKey = this.dislikedPushKey
   }
   else {
-    pushKey = this.unsortedPushKey;
+    this.pushKey = this.unsortedPushKey;
     console.log('Error when trying to get right name list :(')
   }
   
-  const NamesByUserList = this.af.database.list('/UserListOfNames/' + pageName + '/' + pushKey + '/');
+  const NamesByUserList = this.af.database.list('/UserListOfNames/' + pageName + '/' + this.pushKey + '/');
 
   const NamesByPushKeys = NamesByUserList
     .map(list => list.map(name => this.af.database.object('Names/' + name.$key)))
     .flatMap(listOfObservables => Observable.combineLatest(listOfObservables))
+
+  console.log('Louduju z : ' + pageName)  
   
   return NamesByPushKeys;
 }
 
-pushList(listName: string, nameKeysAsObject){
+pushList(pageName: string, nameKeysAsObject){
+  console.log('Pushuju do : ' + pageName)
+  const saveList = this.af.database.list('UserListOfNames/' + pageName + '/')
 
-  //aktualizovat Pushkeys
-  //Smazat puvodni
-  const saveList = this.af.database.list('UserListOfNames/' + listName + '/')
-    .push(
-      nameKeysAsObject)
-  saveList.remove()    
+  let newPushKey = saveList.push(nameKeysAsObject).key
+  console.log('novy pushKey je: ' + newPushKey)
+  console.log('mazu pushKey: ' + this.pushKey)
+  saveList
+    .remove(this.pushKey)   
+
+   if (pageName === 'unsorted') {
+    this.unsortedPushKey = newPushKey
+  }
+  else if (pageName === 'liked') {
+    this.likedPushKey = newPushKey
+  }
+  else if (pageName === 'disliked') {
+    this.dislikedPushKey = newPushKey
+  }
+  else {
+    console.log('Could not save this list :(')
+  }
+    
 }
   
 }
