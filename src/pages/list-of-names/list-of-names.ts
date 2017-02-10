@@ -22,6 +22,8 @@ export class ListOfNames {
     private searchQuery: string = '';
     private UserDbPath: string = '';
     private namesArray: any;
+    private namesSwipedLeft: Array<any> = [];
+    private namesSwipedRight: Array<any> = [];
 
 ionViewWillEnter() {
   this.namesListProvider.findAllNames(this.actualPage)
@@ -72,15 +74,17 @@ constructor(private nav: NavController, private navParams: NavParams, private to
   }
 
   onSwipe(nameOrder:number) {
-    
+  console.log('Jméno po swipování: ' + this.namesList[nameOrder].$key + ' ' + this.namesList[nameOrder].name)  
     
     if (this.swipingSide === 'left') {
-      // this.updateList(nameOrder);
-      this.toastProvider.make('Jméno přesunuto do Nelíbí se mi');
+      // ulozit do namesSwipedLeft
+      // vyhodit ze seznamu this.namesList pomoci delete
+      // on WillLeave poslat seznamy 3x
+      this.toastProvider.make('Jméno ' + this.namesList[nameOrder].name + ' do Nelíbí se mi');
       }
     if (this.swipingSide === 'right') {
 
-      this.toastProvider.make('Jméno přesunuto do vašeho výběru');
+      this.toastProvider.make('Jméno ' + this.namesList[nameOrder].name + ' do vašeho výběru');
       }
   }
 
